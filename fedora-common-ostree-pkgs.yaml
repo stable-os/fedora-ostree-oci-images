@@ -11,6 +11,7 @@ packages:
   - alsa-sof-firmware
   - alsa-ucm
   - alsa-utils
+  - amd-gpu-firmware
   - atmel-firmware
   - attr
   - audit
@@ -59,6 +60,7 @@ packages:
   - gnupg2
   - google-noto-emoji-color-fonts
   - google-noto-naskh-arabic-vf-fonts
+  - google-noto-sans-arabic-vf-fonts
   - google-noto-sans-armenian-vf-fonts
   - google-noto-sans-canadian-aboriginal-vf-fonts
   - google-noto-sans-cherokee-vf-fonts
@@ -90,6 +92,7 @@ packages:
   - ibus-libzhuyin
   - ibus-m17n
   - ibus-typing-booster
+  - intel-gpu-firmware
   - iproute
   - iptables-nft
   - iptstate
@@ -149,6 +152,7 @@ packages:
   - nss-mdns
   - ntfs-3g
   - ntfsprogs
+  - nvidia-gpu-firmware
   - opensc
   - openssh-clients
   - openssh-server
