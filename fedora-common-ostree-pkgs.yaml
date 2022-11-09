@@ -122,8 +122,6 @@ packages:
   - liberation-mono-fonts
   - liberation-sans-fonts
   - liberation-serif-fonts
-  - libertas-sd8686-firmware
-  - libertas-sd8787-firmware
   - libertas-usb8388-firmware
   - libglvnd-gles
   - linux-firmware
