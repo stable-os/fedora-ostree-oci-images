@@ -40,3 +40,18 @@ build kinoite:
       - .buildid
       - logs
     expire_in: 2 week
+
+build kinoite-nightly:
+  stage: build
+  script:
+    - just compose-image kinoite-nightly
+    - just upload-container kinoite-nightly
+    # - just compose kinoite-nightly
+    # - just lorax kinoite-nightly
+    # - just archive kinoite-nightly iso
+    # - just archive kinoite-nightly repo
+  artifacts:
+    paths:
+      - .buildid
+      - logs
+    expire_in: 2 week
