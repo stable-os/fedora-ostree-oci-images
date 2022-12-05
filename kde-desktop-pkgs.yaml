@@ -74,7 +74,6 @@ packages:
   - spectacle
   - systemd-oomd-defaults
   - udisks2
-  - xdg-desktop-portal-gnome
   - xorg-x11-drv-libinput
 packages-x86_64:
   - kio-gdrive
