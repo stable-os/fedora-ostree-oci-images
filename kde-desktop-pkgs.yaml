@@ -9,6 +9,7 @@ packages:
   - fprintd-pam
   - glibc-all-langpacks
   - gnome-keyring-pam
+  - kde-connect
   - kde-gtk-config
   - kde-partitionmanager
   - kde-print-manager
