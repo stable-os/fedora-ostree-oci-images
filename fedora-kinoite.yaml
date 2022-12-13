@@ -31,12 +31,22 @@ packages:
   - krfb
   # Make sure that modem support is installed
   - NetworkManager-ppp
+  # Install gdb-minimal to make getting backtraces work with DrKonqi
+  - gdb-minimal
 
 # Make sure the following are not pulled in when Recommended by other packages
 exclude-packages:
   - plasma-discover-offline-updates
   - plasma-discover-packagekit
   - plasma-pk-updates
+
+# Kinoite specific workarounds
+postprocess:
+  - |
+    #!/bin/bash
+    set -xeuo pipefail
+    # Setup a symlink for gdb-minimal to use it as default gdb
+    echo "L /usr/local/bin/gdb - - - - /usr/bin/gdb-minimal" > /usr/lib/tmpfiles.d/kinoite-gdb.conf
 
 repos:
   - fedora-37
