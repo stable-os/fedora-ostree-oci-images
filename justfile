@@ -14,6 +14,7 @@ force_nocache := "true"
 all:
     just compose silverblue
     just compose kinoite
+    just compose sericea
 
 # Basic validation to make sure the manifests are not completely broken
 validate:
@@ -50,6 +51,9 @@ manifest variant=default_variant:
         "kinoite")
             variant_pretty="Kinoite"
             ;;
+        "sericea")
+            variant_pretty="Sericea"
+            ;;
         "*")
             echo "Unknown variant"
             exit 1
@@ -70,6 +74,9 @@ compose variant=default_variant:
             ;;
         "kinoite")
             variant_pretty="Kinoite"
+            ;;
+        "sericea")
+            variant_pretty="Sericea"
             ;;
         "*")
             echo "Unknown variant"
@@ -143,6 +150,9 @@ compose-image variant=default_variant:
             ;;
         "kinoite")
             variant_pretty="Kinoite"
+            ;;
+        "sericea")
+            variant_pretty="Sericea"
             ;;
         "*")
             echo "Unknown variant"
@@ -263,6 +273,11 @@ lorax variant=default_variant:
             variant_pretty="Kinoite"
             volid_sub="Knt"
             ;;
+        "sericea")
+            variant_pretty="Sericea"
+            # TODO
+            # volid_sub="???"
+            ;;
         "*")
             echo "Unknown variant"
             exit 1
@@ -373,6 +388,9 @@ upload-container variant=default_variant:
         "kinoite")
             variant_pretty="Kinoite"
             ;;
+        "sericea")
+            variant_pretty="Sericea"
+            ;;
         "*")
             echo "Unknown variant"
             exit 1
@@ -437,6 +455,9 @@ archive variant=default_variant kind="repo":
             ;;
         "kinoite")
             variant_pretty="Kinoite"
+            ;;
+        "sericea")
+            variant_pretty="Sericea"
             ;;
         "*")
             echo "Unknown variant"
