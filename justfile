@@ -47,7 +47,7 @@ manifest variant=default_variant:
         "silverblue")
             variant_pretty="Silverblue"
             ;;
-        "kinoite"|"kinoite-nightly")
+        "kinoite"|"kinoite-nightly"|"kinoite-beta")
             variant_pretty="Kinoite"
             ;;
         "*")
@@ -68,7 +68,7 @@ compose variant=default_variant:
         "silverblue")
             variant_pretty="Silverblue"
             ;;
-        "kinoite"|"kinoite-nightly")
+        "kinoite"|"kinoite-nightly"|"kinoite-beta")
             variant_pretty="Kinoite"
             ;;
         "*")
@@ -141,7 +141,7 @@ compose-image variant=default_variant:
         "silverblue")
             variant_pretty="Silverblue"
             ;;
-        "kinoite"|"kinoite-nightly")
+        "kinoite"|"kinoite-nightly"|"kinoite-beta")
             variant_pretty="Kinoite"
             ;;
         "*")
@@ -259,7 +259,7 @@ lorax variant=default_variant:
             variant_pretty="Silverblue"
             volid_sub="SB"
             ;;
-        "kinoite"|"kinoite-nightly")
+        "kinoite"|"kinoite-nightly"|"kinoite-beta")
             variant_pretty="Kinoite"
             volid_sub="Knt"
             ;;
@@ -370,7 +370,7 @@ upload-container variant=default_variant:
         "silverblue")
             variant_pretty="Silverblue"
             ;;
-        "kinoite"|"kinoite-nightly")
+        "kinoite"|"kinoite-nightly"|"kinoite-beta")
             variant_pretty="Kinoite"
             ;;
         "*")
@@ -416,7 +416,7 @@ upload-container variant=default_variant:
     skopeo copy "oci-archive:fedora-${variant}.ociarchive" "docker://${image}:${version}.${buildid}.${git_commit}"
     # Update "un-versioned" tag (only major version)
     skopeo copy "docker://${image}:${version}.${buildid}.${git_commit}" "docker://${image}:${version}"
-    if [[ "${variant}" == "kinoite-nightly" ]]; then
+    if [[ "${variant}" == "kinoite-nightly" ]] || [[ "${variant}" == "kinoite-beta" ]]; then
         # Update latest tag for kinoite-nightly only
         skopeo copy "docker://${image}:${version}.${buildid}.${git_commit}" "docker://${image}:latest"
     fi
@@ -439,7 +439,7 @@ archive variant=default_variant kind="repo":
         "silverblue")
             variant_pretty="Silverblue"
             ;;
-        "kinoite"|"kinoite-nightly")
+        "kinoite"|"kinoite-nightly"|"kinoite-beta")
             variant_pretty="Kinoite"
             ;;
         "*")
