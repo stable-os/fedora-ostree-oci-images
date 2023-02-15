@@ -56,20 +56,20 @@ build kinoite-nightly:
       - logs
     expire_in: 2 week
 
-build kinoite-beta:
-  stage: build
-  script:
-    - just compose-image kinoite-beta
-    - just upload-container kinoite-beta
-    # - just compose kinoite-beta
-    # - just lorax kinoite-beta
-    # - just archive kinoite-beta iso
-    # - just archive kinoite-beta repo
-  artifacts:
-    paths:
-      - .buildid
-      - logs
-    expire_in: 2 week
+# build kinoite-beta:
+#   stage: build
+#   script:
+#     - just compose-image kinoite-beta
+#     - just upload-container kinoite-beta
+#     # - just compose kinoite-beta
+#     # - just lorax kinoite-beta
+#     # - just archive kinoite-beta iso
+#     # - just archive kinoite-beta repo
+#   artifacts:
+#     paths:
+#       - .buildid
+#       - logs
+#     expire_in: 2 week
 
 build vauxite:
   stage: build
