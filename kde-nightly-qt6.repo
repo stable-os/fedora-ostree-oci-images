@@ -1,0 +1,26 @@
+[copr:copr.fedorainfracloud.org:group_kdesig:kde-nightly-qt6]
+name=Copr repo for kde-nightly-qt6 owned by @kdesig
+baseurl=https://download.copr.fedorainfracloud.org/results/@kdesig/kde-nightly-qt6/fedora-rawhide-$basearch/
+type=rpm-md
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=https://download.copr.fedorainfracloud.org/results/@kdesig/kde-nightly-qt6/pubkey.gpg
+repo_gpgcheck=0
+enabled=1
+enabled_metadata=1
+
+# Explicitely exclude all KDE packages that must come from the nightly repo
+# from the Fedora repos to make sure we get them from the nightly copr
+# Generated from:
+# $ podman run --rm -ti fedora:rawhide
+# $ dnf install -y 'dnf-command(copr)' && dnf copr enable -y @kdesig/kde-nightly-qt6
+# $ dnf repository-packages "copr:copr.fedorainfracloud.org:group_kdesig:kde-nightly-qt6" list \
+#   | grep "copr:copr.fedorainfracloud.org:group_kdesig:kde-nightly-qt6" | grep -vE "(debug|devel|\.src)" \
+#   | cut -f1 -d\ | sed 's/\.x86_64//' | sed 's/\.noarch//' | paste -sd " " -
+[fedora-rawhide-nokde]
+name=Fedora rawhide $basearch
+mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=rawhide&arch=$basearch
+enabled=1
+gpgcheck=1
+metadata_expire=1d
+excludepkgs=angelfish bluedevil breeze-cursor-theme breeze-gtk breeze-gtk-common breeze-gtk-gtk2 breeze-gtk-gtk3 breeze-gtk-gtk4 breeze-icon-theme elisa-player extra-cmake-modules ffmpegthumbs flatpak-kcm k3b k3b-libs kactivitymanagerd kde-cli-tools kde-gtk-config kde-print-manager kde-print-manager-libs kdecoration kdeplasma-addons kdesu kdialog keysmith kf6-attica kf6-baloo kf6-baloo-file kf6-baloo-libs kf6-bluez-qt kf6-filesystem kf6-frameworkintegration kf6-frameworkintegration-libs kf6-kactivities kf6-kactivities-stats kf6-kapidox kf6-karchive kf6-kauth kf6-kbookmarks kf6-kcalendarcore kf6-kcmutils kf6-kcodecs kf6-kcompletion kf6-kconfig kf6-kconfig-core kf6-kconfig-gui kf6-kconfigwidgets kf6-kcontacts kf6-kcoreaddons kf6-kcrash kf6-kdav kf6-kdbusaddons kf6-kdeclarative kf6-kded kf6-kdesu kf6-kdnssd kf6-kdoctools kf6-kfilemetadata kf6-kglobalaccel kf6-kglobalaccel-libs kf6-kguiaddons kf6-kholidays kf6-ki18n kf6-kiconthemes kf6-kidletime kf6-kimageformats kf6-kio kf6-kio-core kf6-kio-core-libs kf6-kio-doc kf6-kio-file-widgets kf6-kio-gui kf6-kio-widgets kf6-kio-widgets-libs kf6-kirigami2 kf6-kirigami2-addons kf6-kirigami2-addons-dateandtime kf6-kirigami2-addons-treeview kf6-kitemmodels kf6-kitemviews kf6-kjobwidgets kf6-knewstuff kf6-knotifications kf6-knotifyconfig kf6-kpackage kf6-kparts kf6-kpeople kf6-kplotting kf6-kpty kf6-kquickcharts kf6-krunner kf6-kservice kf6-ktexteditor kf6-ktextwidgets kf6-kunitconversion kf6-kwallet kf6-kwallet-libs kf6-kwayland kf6-kwidgetsaddons kf6-kwindowsystem kf6-kxmlgui kf6-libkcddb kf6-libkcddb-doc kf6-modemmanager-qt kf6-networkmanager-qt kf6-plasma kf6-prison kf6-purpose kf6-rpm-macros kf6-solid kf6-sonnet kf6-sonnet-core kf6-sonnet-ui kf6-syndication kf6-syntax-highlighting kf6-threadweaver kgamma kinfocenter kmenuedit kongress konsole5 konsole5-part kpipewire kscreen kscreenlocker ksshaskpass ksystemstats kuserfeedback kuserfeedback-console kwayland-integration kwin kwin-common kwin-doc kwin-libs kwin-wayland kwin-x11 kwrited layer-shell-qt libkscreen-qt6 libksysguard libksysguard-common libkworkspace5 oxygen-cursor-themes oxygen-icon-theme pam-kwallet phonon-qt6 plasma-breeze plasma-breeze-common plasma-browser-integration plasma-desktop plasma-desktop-doc plasma-desktop-kimpanel-scim plasma-disks plasma-drkonqi plasma-firewall plasma-firewall-firewalld plasma-firewall-ufw plasma-integration plasma-lookandfeel-fedora plasma-milou plasma-mobile plasma-nano plasma-nm plasma-nm-fortisslvpn plasma-nm-iodine plasma-nm-l2tp plasma-nm-mobile plasma-nm-openconnect plasma-nm-openswan plasma-nm-openvpn plasma-nm-pptp plasma-nm-ssh plasma-nm-sstp plasma-nm-strongswan plasma-nm-vpnc plasma-oxygen plasma-pa plasma-sdk plasma-settings plasma-systemmonitor plasma-systemsettings plasma-thunderbolt plasma-vault plasma-workspace plasma-workspace-common plasma-workspace-doc plasma-workspace-geolocation plasma-workspace-geolocation-libs plasma-workspace-libs plasma-workspace-wallpapers plasma-workspace-wayland plasma-workspace-x11 plasma5support plymouth-theme-breeze polkit-kde powerdevil qqc2-breeze-style qqc2-desktop-style qt6-qtbase qt6-qtbase-common qt6-qtbase-examples qt6-qtbase-gui qt6-qtbase-mysql qt6-qtbase-odbc qt6-qtbase-postgresql qt6-qtbase-static qt6-style-oxygen sddm-breeze sddm-kcm sddm-wayland-plasma spectacle tokodon xdg-desktop-portal-kde yakuake
