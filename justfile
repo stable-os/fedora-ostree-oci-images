@@ -51,7 +51,7 @@ manifest variant=default_variant:
         "silverblue")
             variant_pretty="Silverblue"
             ;;
-        "kinoite")
+        "kinoite"|"kinoite-nightly"|"kinoite-beta")
             variant_pretty="Kinoite"
             ;;
         "sericea")
@@ -84,7 +84,7 @@ compose variant=default_variant:
         "silverblue")
             variant_pretty="Silverblue"
             ;;
-        "kinoite")
+        "kinoite"|"kinoite-nightly"|"kinoite-beta")
             variant_pretty="Kinoite"
             ;;
         "sericea")
@@ -169,7 +169,7 @@ compose-image variant=default_variant:
         "silverblue")
             variant_pretty="Silverblue"
             ;;
-        "kinoite")
+        "kinoite"|"kinoite-nightly"|"kinoite-beta")
             variant_pretty="Kinoite"
             ;;
         "sericea")
@@ -299,7 +299,7 @@ lorax variant=default_variant:
             variant_pretty="Silverblue"
             volid_sub="SB"
             ;;
-        "kinoite")
+        "kinoite"|"kinoite-nightly"|"kinoite-beta")
             variant_pretty="Kinoite"
             volid_sub="Knt"
             ;;
@@ -428,7 +428,7 @@ upload-container variant=default_variant:
         "silverblue")
             variant_pretty="Silverblue"
             ;;
-        "kinoite")
+        "kinoite"|"kinoite-nightly"|"kinoite-beta")
             variant_pretty="Kinoite"
             ;;
         "sericea")
@@ -486,6 +486,10 @@ upload-container variant=default_variant:
     skopeo copy --retry-times 3 "oci-archive:fedora-${variant}.ociarchive" "docker://${image}:${version}.${buildid}.${git_commit}"
     # Update "un-versioned" tag (only major version)
     skopeo copy --retry-times 3 "docker://${image}:${version}.${buildid}.${git_commit}" "docker://${image}:${version}"
+    if [[ "${variant}" == "kinoite-nightly" ]]; then
+        # Update latest tag for kinoite-nightly only
+        skopeo copy --retry-times 3 "docker://${image}:${version}.${buildid}.${git_commit}" "docker://${image}:latest"
+    fi
 
 # Make a container image with the artifacts
 archive variant=default_variant kind="repo":
@@ -505,7 +509,7 @@ archive variant=default_variant kind="repo":
         "silverblue")
             variant_pretty="Silverblue"
             ;;
-        "kinoite")
+        "kinoite"|"kinoite-nightly"|"kinoite-beta")
             variant_pretty="Kinoite"
             ;;
         "sericea")
