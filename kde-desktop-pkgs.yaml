@@ -12,6 +12,7 @@ packages:
   - glibc-all-langpacks
   - gnome-keyring-pam
   - initial-setup-gui
+  - kcharselect
   - kde-connect
   - kde-gtk-config
   - kde-partitionmanager
