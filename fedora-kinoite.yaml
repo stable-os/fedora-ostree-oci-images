@@ -29,6 +29,8 @@ packages:
   - kamera
   # Include krfb by default. See: https://pagure.io/fedora-kde/SIG/issue/13
   - krfb
+  # Make sure that modem support is installed
+  - NetworkManager-ppp
 
 # Make sure the following are not pulled in when Recommended by other packages
 exclude-packages:
