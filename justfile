@@ -10,12 +10,13 @@ unified_core := "true"
 force_nocache := "true"
 # force_nocache := "false"
 
-# Default is to compose Silverblue and Kinoite
+# Default is to compose all variants
 all:
     just compose silverblue
     just compose kinoite
     just compose sericea
     just compose vauxite
+    just compose lazurite
     just compose base
 
 # Basic validation to make sure the manifests are not completely broken
@@ -59,6 +60,9 @@ manifest variant=default_variant:
         "vauxite")
             variant_pretty="Vauxite"
             ;;
+        "lazurite")
+            variant_pretty="Lazurite"
+            ;;
         "base")
             variant_pretty="Base"
             ;;
@@ -88,6 +92,9 @@ compose variant=default_variant:
             ;;
         "vauxite")
             variant_pretty="Vauxite"
+            ;;
+        "lazurite")
+            variant_pretty="Lazurite"
             ;;
         "base")
             variant_pretty="Base"
@@ -170,6 +177,9 @@ compose-image variant=default_variant:
             ;;
         "vauxite")
             variant_pretty="Vauxite"
+            ;;
+        "lazurite")
+            variant_pretty="Lazurite"
             ;;
         "base")
             variant_pretty="Base"
@@ -302,6 +312,11 @@ lorax variant=default_variant:
             variant_pretty="Vauxite"
             volid_sub="Vxt"
             ;;
+        "lazurite")
+            variant_pretty="Lazurite"
+            # TODO
+            # volid_sub="???"
+            ;;
         "base")
             variant_pretty="Base"
             volid_sub="Base"
@@ -422,6 +437,9 @@ upload-container variant=default_variant:
         "vauxite")
             variant_pretty="Vauxite"
             ;;
+        "lazurite")
+            variant_pretty="Lazurite"
+            ;;
         "base")
             variant_pretty="Base"
             ;;
@@ -495,6 +513,9 @@ archive variant=default_variant kind="repo":
             ;;
         "vauxite")
             variant_pretty="Vauxite"
+            ;;
+        "lazurite")
+            variant_pretty="Lazurite"
             ;;
         "base")
             variant_pretty="Base"

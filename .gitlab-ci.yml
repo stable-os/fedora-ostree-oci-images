@@ -69,6 +69,20 @@ build vauxite:
       - logs
     expire_in: 2 week
 
+build lazurite:
+  stage: build
+  script:
+    - just compose-image lazurite
+    - just upload-container lazurite
+    # - just lorax lazurite
+    # - just archive lazurite iso
+    # - just archive lazurite repo
+  artifacts:
+    paths:
+      - .buildid
+      - logs
+    expire_in: 2 week
+
 build base:
   stage: build
   script:
