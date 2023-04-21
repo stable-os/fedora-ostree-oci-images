@@ -11,6 +11,7 @@ packages:
   - alsa-ucm
   - alsa-utils
   - amd-gpu-firmware
+  - atheros-firmware
   - atmel-firmware
   - attr
   - audit
@@ -22,6 +23,7 @@ packages:
   - bc
   - bind-utils
   - bluez-cups
+  - brcmfmac-firmware
   - btrfs-progs
   - bzip2
   - chrony
@@ -142,6 +144,7 @@ packages:
   - man-db
   - man-pages
   - mdadm
+  - mediatek-firmware
   - mesa-dri-drivers
   - mesa-vulkan-drivers
   - mpage
@@ -181,6 +184,7 @@ packages:
   - qt5-qtxmlpatterns
   - quota
   - realmd
+  - realtek-firmware
   - rit-meera-new-fonts
   - rootfiles
   - rpm
