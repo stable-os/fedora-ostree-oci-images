@@ -146,7 +146,7 @@ packages:
   - man-db
   - man-pages
   - mdadm
-  - mediatek-firmware
+  #- mediatek-firmware
   - mesa-dri-drivers
   - mesa-vulkan-drivers
   - mpage
