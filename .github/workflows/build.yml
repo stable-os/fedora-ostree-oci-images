@@ -25,6 +25,8 @@ jobs:
     runs-on: ubuntu-22.04
     container:
       image: quay.io/fedora-ostree-desktops/buildroot
+      # Privilleged
+      options: --privileged
     permissions:
       contents: read
       packages: write
