@@ -48,7 +48,7 @@ jobs:
     
       - name: Import image
         run: |
-          cat fedora-${{ matrix.image_name }}.ociarchive | docker import - fedora-ostree-desktop-${{ matrix.image_name}}:latest-${{ matrix.version }}
+          cat fedora-${{ matrix.image_name }}.ociarchive | podman import - fedora-ostree-desktop-${{ matrix.image_name}}:latest-${{ matrix.version }}
 
       # Workaround bug where capital letters in your GitHub username make it impossible to push to GHCR.
       # https://github.com/macbre/push-to-ghcr/issues/12
