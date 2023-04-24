@@ -51,7 +51,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build --platform linux/${{ matrix.arch }} --name buildroot --build-arg FEDORA_IMAGE_VERSION=${{ matrix.image_version }} --build-arg FEDORA_IMAGE_ARCH=${{ matrix.arch }} --build-arg IMAGE_TYPE=${{ matrix.image_name }} .
+          docker build --platform linux/${{ matrix.arch }} -t buildroot --build-arg FEDORA_IMAGE_VERSION=${{ matrix.image_version }} --build-arg FEDORA_IMAGE_ARCH=${{ matrix.arch }} --build-arg IMAGE_TYPE=${{ matrix.image_name }} .
 
       - name: Build image
         run: |
