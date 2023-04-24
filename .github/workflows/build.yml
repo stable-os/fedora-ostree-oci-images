@@ -49,10 +49,6 @@ jobs:
         name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
-      - name: Install dependencies
-        run: |
-          dnf -y upgrade && dnf -y install buildah dbus-daemon file flatpak git-core jq just lorax ostree podman python3-pyyaml rpm-ostree selinux-policy-targeted skopeo tar zstd && dnf clean all
-
       - name: Build Docker image
         run: |
           docker build --platform linux/${{ matrix.arch }} --name buildroot --build-arg FEDORA_IMAGE_VERSION=${{ matrix.image_version }} --build-arg FEDORA_IMAGE_ARCH=${{ matrix.arch }} --build-arg IMAGE_TYPE=${{ matrix.image_name }} .
