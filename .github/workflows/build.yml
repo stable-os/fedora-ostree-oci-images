@@ -38,7 +38,7 @@ jobs:
         arch: [x86_64, aarch64]
         # Change this to the branch's version!
         version: [39]
-        image_version: [rawhide]
+        image_version: [latest]
     steps: 
       # Checkout push-to-registry action GitHub repository
       - name: Checkout Push to Registry action
