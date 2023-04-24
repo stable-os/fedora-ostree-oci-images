@@ -26,7 +26,7 @@ jobs:
     container:
       image: quay.io/fedora-ostree-desktops/buildroot
       # Privilleged
-      options: --privileged --arch ${{ matrix.arch }}
+      options: --privileged --platform linux/${{ matrix.arch }}
     permissions:
       contents: read
       packages: write
