@@ -12,4 +12,6 @@ ENV image=${IMAGE_TYPE}
 COPY build.sh /fixed_build.sh
 RUN chmod +x /fixed_build.sh
 
+WORKDIR /build_dir
+
 ENTRYPOINT ["/fixed_build.sh"]
