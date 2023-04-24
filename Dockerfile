@@ -9,7 +9,7 @@ RUN dnf -y upgrade && dnf -y install buildah dbus-daemon file flatpak git-core j
 # Set the env image to IMAGE_TYPE
 ENV image=${IMAGE_TYPE}
 
-COPY build.sh /build_dir/fixed_build.sh
-RUN chmod +x /build_dir/fixed_build.sh
+COPY build.sh /fixed_build.sh
+RUN chmod +x /fixed_build.sh
 
-ENTRYPOINT ["/build_dir/fixed_build.sh"]
+ENTRYPOINT ["/fixed_build.sh"]
