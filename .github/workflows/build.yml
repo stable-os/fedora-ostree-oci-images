@@ -24,7 +24,7 @@ jobs:
     name: Build and push image
     runs-on: ubuntu-22.04
     container:
-      image: quay.io/fedora-ostree-desktops/buildroot
+      image: fedora:${{ matrix.image_version }} #quay.io/fedora-ostree-desktops/buildroot
       # Privilleged
       options: --privileged --platform linux/${{ matrix.arch }}
     permissions:
@@ -38,10 +38,15 @@ jobs:
         arch: [x86_64, aarch64]
         # Change this to the branch's version!
         version: [39]
+        image_version: [rawhide]
     steps: 
       # Checkout push-to-registry action GitHub repository
       - name: Checkout Push to Registry action
         uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          dnf -y upgrade && dnf -y install buildah dbus-daemon file flatpak git-core jq just lorax ostree podman python3-pyyaml rpm-ostree selinux-policy-targeted skopeo tar zstd && dnf clean all
 
       - name: Compose image
         run: |
