@@ -26,7 +26,7 @@ jobs:
     container:
       image: quay.io/fedora-ostree-desktops/buildroot
       # Privilleged
-      options: --privileged
+      options: --privileged --arch ${{ matrix.arch }}
     permissions:
       contents: read
       packages: write
@@ -35,6 +35,7 @@ jobs:
       fail-fast: false
       matrix:
         image_name: [silverblue, kinoite, sericea, vauxite, base]
+        arch: [x86_64, aarch64]
         # Change this to the branch's version!
         version: [39]
     steps: 
@@ -48,7 +49,7 @@ jobs:
     
       - name: Import image
         run: |
-          cat fedora-${{ matrix.image_name }}.ociarchive | docker import - fedora-ostree-desktop-${{ matrix.image_name}}:latest-${{ matrix.version }}
+          cat fedora-${{ matrix.image_name }}.ociarchive | docker import - fedora-ostree-desktop-${{ matrix.image_name}}:latest-${{ matrix.version }}-${{ matrix.arch }}
 
       # Workaround bug where capital letters in your GitHub username make it impossible to push to GHCR.
       # https://github.com/macbre/push-to-ghcr/issues/12
@@ -68,7 +69,7 @@ jobs:
           REGISTRY_PASSWORD: ${{ github.token }}
         with:
           image: fedora-ostree-desktop-${{ matrix.image_name}}
-          tags: latest-${{ matrix.version }}
+          tags: latest-${{ matrix.version }}-${{ matrix.arch }}
           registry: ${{ steps.registry_case.outputs.lowercase }}
           username: ${{ env.REGISTRY_USER }}
           password: ${{ env.REGISTRY_PASSWORD }}
