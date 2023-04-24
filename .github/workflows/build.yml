@@ -35,10 +35,10 @@ jobs:
       fail-fast: false
       matrix:
         image_name: [silverblue, kinoite, sericea, vauxite, base]
-        arch: [x86_64, aarch64]
+        arch: [x86_64, arm64v8]
         # Change this to the branch's version!
         version: [39]
-        image_version: [latest]
+        image_version: [rawhide]
     steps: 
       # Checkout push-to-registry action GitHub repository
       - name: Checkout Push to Registry action
