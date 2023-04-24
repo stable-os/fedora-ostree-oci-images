@@ -23,10 +23,10 @@ jobs:
   push-ghcr:
     name: Build and push image
     runs-on: ubuntu-22.04
-    container:
-      image: fedora:${{ matrix.image_version }} #quay.io/fedora-ostree-desktops/buildroot
-      # Privilleged
-      options: --privileged --platform linux/${{ matrix.arch }}
+    #container:
+    #  image: fedora:${{ matrix.image_version }} #quay.io/fedora-ostree-desktops/buildroot
+    #  # Privilleged
+    #  options: --privileged --platform linux/${{ matrix.arch }}
     permissions:
       contents: read
       packages: write
@@ -44,13 +44,22 @@ jobs:
       - name: Checkout Push to Registry action
         uses: actions/checkout@v3
 
+      # Setup qemu
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
       - name: Install dependencies
         run: |
           dnf -y upgrade && dnf -y install buildah dbus-daemon file flatpak git-core jq just lorax ostree podman python3-pyyaml rpm-ostree selinux-policy-targeted skopeo tar zstd && dnf clean all
 
-      - name: Compose image
+      - name: Build Docker image
         run: |
-          just compose-image ${{ matrix.image_name }}
+          docker build --platform linux/${{ matrix.arch }} --name buildroot --build-arg FEDORA_IMAGE_VERSION=${{ matrix.image_version }} --build-arg FEDORA_IMAGE_ARCH=${{ matrix.arch }} --build-arg IMAGE_TYPE=${{ matrix.image_name }} .
+
+      - name: Build image
+        run: |
+          docker run --privileged --platform linux/${{ matrix.arch }} --name buildroot --volume $PWD:/build_dir buildroot
     
       - name: Import image
         run: |
